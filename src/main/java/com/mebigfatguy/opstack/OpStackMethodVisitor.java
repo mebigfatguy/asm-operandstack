@@ -1,8 +1,5 @@
 package com.mebigfatguy.opstack;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.objectweb.asm.Handle;
 import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
@@ -10,7 +7,7 @@ import org.objectweb.asm.Opcodes;
 
 public class OpStackMethodVisitor extends MethodVisitor {
 
-	List<Operand> opStack = new ArrayList<>();
+	OpStack opStack = new OpStack();
 
 	public OpStackMethodVisitor() {
 		super(Opcodes.ASM9);
@@ -33,114 +30,105 @@ public class OpStackMethodVisitor extends MethodVisitor {
 		case Opcodes.NOP:
 			break;
 		case Opcodes.ACONST_NULL:
-			opStack.add(Operand.builder().withValue(null).build());
+			opStack.push(Operand.builder().withValue(null).build());
 			break;
 		case Opcodes.ICONST_M1:
-			opStack.add(Operand.builder().withValue(-1).withType("I").build());
+			opStack.push(Operand.builder().withValue(-1).withType("I").build());
 			break;
 		case Opcodes.ICONST_0:
-			opStack.add(Operand.builder().withValue(0).withType("I").build());
+			opStack.push(Operand.builder().withValue(0).withType("I").build());
 			break;
 		case Opcodes.ICONST_1:
-			opStack.add(Operand.builder().withValue(1).withType("I").build());
+			opStack.push(Operand.builder().withValue(1).withType("I").build());
 			break;
 		case Opcodes.ICONST_2:
-			opStack.add(Operand.builder().withValue(2).withType("I").build());
+			opStack.push(Operand.builder().withValue(2).withType("I").build());
 			break;
 		case Opcodes.ICONST_3:
-			opStack.add(Operand.builder().withValue(3).withType("I").build());
+			opStack.push(Operand.builder().withValue(3).withType("I").build());
 			break;
 		case Opcodes.ICONST_4:
-			opStack.add(Operand.builder().withValue(4).withType("I").build());
+			opStack.push(Operand.builder().withValue(4).withType("I").build());
 			break;
 		case Opcodes.ICONST_5:
-			opStack.add(Operand.builder().withValue(5).withType("I").build());
+			opStack.push(Operand.builder().withValue(5).withType("I").build());
 			break;
 		case Opcodes.LCONST_0:
-			opStack.add(Operand.builder().withValue(0).withType("L").build());
+			opStack.push(Operand.builder().withValue(0).withType("J").build());
 			break;
 		case Opcodes.LCONST_1:
-			opStack.add(Operand.builder().withValue(1).withType("L").build());
+			opStack.push(Operand.builder().withValue(1).withType("J").build());
 			break;
 		case Opcodes.FCONST_0:
-			opStack.add(Operand.builder().withValue(0.0f).withType("F").build());
+			opStack.push(Operand.builder().withValue(0.0f).withType("F").build());
 			break;
 		case Opcodes.FCONST_1:
-			opStack.add(Operand.builder().withValue(1.0f).withType("F").build());
+			opStack.push(Operand.builder().withValue(1.0f).withType("F").build());
 			break;
 		case Opcodes.FCONST_2:
-			opStack.add(Operand.builder().withValue(2.0f).withType("F").build());
+			opStack.push(Operand.builder().withValue(2.0f).withType("F").build());
 			break;
 		case Opcodes.DCONST_0:
-			opStack.add(Operand.builder().withValue(0.0).withType("D").build());
+			opStack.push(Operand.builder().withValue(0.0).withType("D").build());
 			break;
 		case Opcodes.DCONST_1:
-			opStack.add(Operand.builder().withValue(1).withType("D").build());
+			opStack.push(Operand.builder().withValue(1).withType("D").build());
 			break;
 		case Opcodes.IALOAD:
-			opStack.add(Operand.builder().withType("I").build());
+			opStack.push(Operand.builder().withType("I").build());
 			break;
 		case Opcodes.LALOAD:
-			opStack.add(Operand.builder().withType("L").build());
+			opStack.push(Operand.builder().withType("J").build());
 			break;
 		case Opcodes.FALOAD:
-			opStack.add(Operand.builder().withType("F").build());
+			opStack.push(Operand.builder().withType("F").build());
 			break;
 		case Opcodes.DALOAD:
-			opStack.add(Operand.builder().withType("D").build());
+			opStack.push(Operand.builder().withType("D").build());
 			break;
 		case Opcodes.AALOAD:
 			break;
 		case Opcodes.BALOAD:
-			opStack.add(Operand.builder().withType("B").build());
+			opStack.push(Operand.builder().withType("B").build());
 			break;
 		case Opcodes.CALOAD:
-			opStack.add(Operand.builder().withType("C").build());
+			opStack.push(Operand.builder().withType("C").build());
 			break;
 		case Opcodes.SALOAD:
-			opStack.add(Operand.builder().withType("Ljava/lang/String;").build());
+			opStack.push(Operand.builder().withType("Ljava/lang/String;").build());
 			break;
 		case Opcodes.IASTORE:
-			opStack.remove(opStack.size() - 1);
-			opStack.remove(opStack.size() - 1);
+			opStack.pop2();
 			break;
 		case Opcodes.LASTORE:
-			opStack.remove(opStack.size() - 1);
-			opStack.remove(opStack.size() - 1);
+			opStack.pop2();
 			break;
 		case Opcodes.FASTORE:
-			opStack.remove(opStack.size() - 1);
-			opStack.remove(opStack.size() - 1);
+			opStack.pop2();
 			break;
 		case Opcodes.DASTORE:
-			opStack.remove(opStack.size() - 1);
-			opStack.remove(opStack.size() - 1);
+			opStack.pop2();
 			break;
 		case Opcodes.AASTORE:
-			opStack.remove(opStack.size() - 1);
-			opStack.remove(opStack.size() - 1);
+			opStack.pop2();
 			break;
 		case Opcodes.BASTORE:
-			opStack.remove(opStack.size() - 1);
-			opStack.remove(opStack.size() - 1);
+			opStack.pop2();
 			break;
 		case Opcodes.CASTORE:
-			opStack.remove(opStack.size() - 1);
-			opStack.remove(opStack.size() - 1);
+			opStack.pop2();
 			break;
 		case Opcodes.SASTORE:
-			opStack.remove(opStack.size() - 1);
-			opStack.remove(opStack.size() - 1);
+			opStack.pop2();
 			break;
 		case Opcodes.POP:
-			opStack.remove(opStack.size() - 1);
+			opStack.pop();
 			break;
 		case Opcodes.POP2:
-			opStack.remove(opStack.size() - 1);
-			opStack.remove(opStack.size() - 1);
+			opStack.pop2();
 			break;
 		case Opcodes.DUP:
-			opStack.add(opStack.get(opStack.size() - 1));
+			opStack.dup();
 			break;
 		case Opcodes.DUP_X1:
 			break;
@@ -155,6 +143,10 @@ public class OpStackMethodVisitor extends MethodVisitor {
 		case Opcodes.SWAP:
 			break;
 		case Opcodes.IADD:
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("I").build());
 			break;
 		case Opcodes.LADD:
 			break;
@@ -267,21 +259,28 @@ public class OpStackMethodVisitor extends MethodVisitor {
 		case Opcodes.DCMPG:
 			break;
 		case Opcodes.IRETURN:
-			opStack.remove(opStack.size() - 1);
+			opStack.pop();
 			break;
 		case Opcodes.LRETURN:
+			opStack.pop();
 			break;
 		case Opcodes.FRETURN:
+			opStack.pop();
 			break;
 		case Opcodes.DRETURN:
+			opStack.pop();
 			break;
 		case Opcodes.ARETURN:
+			opStack.pop();
 			break;
 		case Opcodes.RETURN:
 			break;
 		case Opcodes.ARRAYLENGTH:
+			opStack.pop();
+			opStack.push(Operand.builder().withType("I").build());
 			break;
 		case Opcodes.ATHROW:
+			opStack.pop();
 			break;
 		case Opcodes.MONITORENTER:
 			break;
@@ -299,6 +298,57 @@ public class OpStackMethodVisitor extends MethodVisitor {
 
 	@Override
 	public void visitVarInsn(int opcode, int varIndex) {
+
+		switch (opcode) {
+		case Opcodes.ILOAD:
+			opStack.push(Operand.builder().withType("I").fromRegister(varIndex).build());
+			break;
+		case Opcodes.LLOAD:
+			opStack.push(Operand.builder().withType("J").fromRegister(varIndex).build());
+			break;
+		case Opcodes.FLOAD:
+			opStack.push(Operand.builder().withType("F").fromRegister(varIndex).build());
+			break;
+		case Opcodes.DLOAD:
+			opStack.push(Operand.builder().withType("D").fromRegister(varIndex).build());
+			break;
+		case Opcodes.ALOAD:
+			opStack.push(Operand.builder().withType("D").fromRegister(varIndex).build());
+			break;
+		case Opcodes.ISTORE: {
+			Operand o = opStack.pop();
+			Operand v = opStack.pop();
+			// store register variable
+			break;
+		}
+		case Opcodes.LSTORE: {
+			Operand o = opStack.pop();
+			Operand v = opStack.pop();
+			// store register variable
+			break;
+		}
+		case Opcodes.FSTORE: {
+			Operand o = opStack.pop();
+			Operand v = opStack.pop();
+			// store register variable
+			break;
+		}
+		case Opcodes.DSTORE: {
+			Operand o = opStack.pop();
+			Operand v = opStack.pop();
+			// store register variable
+			break;
+		}
+		case Opcodes.ASTORE: {
+			Operand o = opStack.pop();
+			Operand v = opStack.pop();
+			// store register variable
+			break;
+		}
+		case Opcodes.RET:
+			break;
+		}
+
 		super.visitVarInsn(opcode, varIndex);
 	}
 
@@ -378,7 +428,7 @@ public class OpStackMethodVisitor extends MethodVisitor {
 		opStack.clear();
 	}
 
-	public List<Operand> getStack() {
+	public OpStack getStack() {
 		return opStack;
 	}
 }
