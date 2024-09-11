@@ -9,6 +9,6 @@ public class OSTestMethodVisitor extends OpStackMethodVisitor {
 	@Override
 	public void visitEnd() {
 		super.visitEnd();
-		Assertions.assertTrue(getStack().isEmpty());
+		Assertions.assertTrue(getStack().isEmpty(), "parsing of " + methodName + " does not clear the op stack");
 	}
 }

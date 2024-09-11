@@ -7,10 +7,16 @@ import org.objectweb.asm.Opcodes;
 
 public class OpStackMethodVisitor extends MethodVisitor {
 
-	OpStack opStack = new OpStack();
+	protected OpStack opStack = new OpStack();
+	protected String methodName;
 
 	public OpStackMethodVisitor() {
 		super(Opcodes.ASM9);
+	}
+
+	public void setMethodName(String name) {
+		methodName = name;
+		opStack.clear();
 	}
 
 	@Override
@@ -142,112 +148,344 @@ public class OpStackMethodVisitor extends MethodVisitor {
 			break;
 		case Opcodes.SWAP:
 			break;
-		case Opcodes.IADD:
+		case Opcodes.IADD: {
 			Operand op1 = opStack.pop();
 			Operand op2 = opStack.pop();
 			// possible value push
 			opStack.push(Operand.builder().withType("I").build());
 			break;
-		case Opcodes.LADD:
+		}
+		case Opcodes.LADD: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("J").build());
 			break;
-		case Opcodes.FADD:
+		}
+		case Opcodes.FADD: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("F").build());
 			break;
-		case Opcodes.DADD:
+		}
+		case Opcodes.DADD: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("D").build());
 			break;
-		case Opcodes.ISUB:
+		}
+		case Opcodes.ISUB: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("I").build());
 			break;
-		case Opcodes.LSUB:
+		}
+		case Opcodes.LSUB: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("J").build());
 			break;
-		case Opcodes.FSUB:
+		}
+		case Opcodes.FSUB: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("F").build());
 			break;
-		case Opcodes.DSUB:
+		}
+		case Opcodes.DSUB: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("D").build());
 			break;
-		case Opcodes.IMUL:
+		}
+		case Opcodes.IMUL: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("I").build());
 			break;
-		case Opcodes.LMUL:
+		}
+		case Opcodes.LMUL: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("J").build());
 			break;
-		case Opcodes.FMUL:
+		}
+		case Opcodes.FMUL: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("F").build());
 			break;
-		case Opcodes.DMUL:
+		}
+		case Opcodes.DMUL: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("D").build());
 			break;
-		case Opcodes.IDIV:
+		}
+		case Opcodes.IDIV: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("I").build());
 			break;
-		case Opcodes.LDIV:
+		}
+		case Opcodes.LDIV: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("J").build());
 			break;
-		case Opcodes.FDIV:
+		}
+		case Opcodes.FDIV: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("F").build());
 			break;
-		case Opcodes.DDIV:
+		}
+		case Opcodes.DDIV: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("D").build());
 			break;
-		case Opcodes.IREM:
+		}
+		case Opcodes.IREM: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("I").build());
 			break;
-		case Opcodes.LREM:
+		}
+		case Opcodes.LREM: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("J").build());
 			break;
-		case Opcodes.FREM:
+		}
+		case Opcodes.FREM: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("F").build());
 			break;
-		case Opcodes.DREM:
+		}
+		case Opcodes.DREM: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("D").build());
 			break;
-		case Opcodes.INEG:
+		}
+		case Opcodes.INEG: {
+			Operand op1 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("I").build());
 			break;
-		case Opcodes.LNEG:
+		}
+		case Opcodes.LNEG: {
+			Operand op1 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("J").build());
 			break;
-		case Opcodes.FNEG:
+		}
+		case Opcodes.FNEG: {
+			Operand op1 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("F").build());
 			break;
-		case Opcodes.DNEG:
+		}
+		case Opcodes.DNEG: {
+			Operand op1 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("D").build());
 			break;
-		case Opcodes.ISHL:
+		}
+		case Opcodes.ISHL: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("I").build());
 			break;
-		case Opcodes.LSHL:
+		}
+		case Opcodes.LSHL: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("J").build());
 			break;
-		case Opcodes.ISHR:
+		}
+		case Opcodes.ISHR: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("I").build());
 			break;
-		case Opcodes.LSHR:
+		}
+		case Opcodes.LSHR: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("J").build());
 			break;
-		case Opcodes.IUSHR:
+		}
+		case Opcodes.IUSHR: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("I").build());
 			break;
-		case Opcodes.LUSHR:
+		}
+		case Opcodes.LUSHR: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("J").build());
 			break;
-		case Opcodes.IAND:
+		}
+		case Opcodes.IAND: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("I").build());
 			break;
-		case Opcodes.LAND:
+		}
+		case Opcodes.LAND: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("J").build());
 			break;
-		case Opcodes.IOR:
+		}
+		case Opcodes.IOR: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("I").build());
 			break;
-		case Opcodes.LOR:
+		}
+		case Opcodes.LOR: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("J").build());
 			break;
-		case Opcodes.IXOR:
+		}
+		case Opcodes.IXOR: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("I").build());
 			break;
-		case Opcodes.LXOR:
+		}
+		case Opcodes.LXOR: {
+			Operand op1 = opStack.pop();
+			Operand op2 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("J").build());
 			break;
-		case Opcodes.I2L:
+		}
+		case Opcodes.I2L: {
+			Operand op1 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("J").build());
 			break;
-		case Opcodes.I2F:
+		}
+		case Opcodes.I2F: {
+			Operand op1 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("F").build());
 			break;
-		case Opcodes.I2D:
+		}
+		case Opcodes.I2D: {
+			Operand op1 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("D").build());
 			break;
-		case Opcodes.L2I:
+		}
+		case Opcodes.L2I: {
+			Operand op1 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("I").build());
 			break;
-		case Opcodes.L2F:
+		}
+		case Opcodes.L2F: {
+			Operand op1 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("F").build());
 			break;
-		case Opcodes.L2D:
+		}
+		case Opcodes.L2D: {
+			Operand op1 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("D").build());
 			break;
-		case Opcodes.F2I:
+		}
+		case Opcodes.F2I: {
+			Operand op1 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("I").build());
 			break;
-		case Opcodes.F2L:
+		}
+		case Opcodes.F2L: {
+			Operand op1 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("J").build());
 			break;
-		case Opcodes.F2D:
+		}
+		case Opcodes.F2D: {
+			Operand op1 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("D").build());
 			break;
-		case Opcodes.D2I:
+		}
+		case Opcodes.D2I: {
+			Operand op1 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("I").build());
 			break;
-		case Opcodes.D2L:
+		}
+		case Opcodes.D2L: {
+			Operand op1 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("J").build());
 			break;
-		case Opcodes.D2F:
+		}
+		case Opcodes.D2F: {
+			Operand op1 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("F").build());
 			break;
-		case Opcodes.I2B:
+		}
+		case Opcodes.I2B: {
+			Operand op1 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("B").build());
 			break;
-		case Opcodes.I2C:
+		}
+		case Opcodes.I2C: {
+			Operand op1 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("C").build());
 			break;
-		case Opcodes.I2S:
+		}
+		case Opcodes.I2S: {
+			Operand op1 = opStack.pop();
+			// possible value push
+			opStack.push(Operand.builder().withType("Ljava/lang/String;").build());
 			break;
+		}
 		case Opcodes.LCMP:
 			break;
 		case Opcodes.FCMPL:
@@ -301,19 +539,19 @@ public class OpStackMethodVisitor extends MethodVisitor {
 
 		switch (opcode) {
 		case Opcodes.ILOAD:
-			opStack.push(Operand.builder().withType("I").fromRegister(varIndex).build());
+			opStack.push(Operand.builder().withType("I").withRegister(varIndex).build());
 			break;
 		case Opcodes.LLOAD:
-			opStack.push(Operand.builder().withType("J").fromRegister(varIndex).build());
+			opStack.push(Operand.builder().withType("J").withRegister(varIndex).build());
 			break;
 		case Opcodes.FLOAD:
-			opStack.push(Operand.builder().withType("F").fromRegister(varIndex).build());
+			opStack.push(Operand.builder().withType("F").withRegister(varIndex).build());
 			break;
 		case Opcodes.DLOAD:
-			opStack.push(Operand.builder().withType("D").fromRegister(varIndex).build());
+			opStack.push(Operand.builder().withType("D").withRegister(varIndex).build());
 			break;
 		case Opcodes.ALOAD:
-			opStack.push(Operand.builder().withType("D").fromRegister(varIndex).build());
+			opStack.push(Operand.builder().withType("Ljava/lang/Object;").withRegister(varIndex).build());
 			break;
 		case Opcodes.ISTORE: {
 			Operand o = opStack.pop();
@@ -360,6 +598,27 @@ public class OpStackMethodVisitor extends MethodVisitor {
 	@Override
 	public void visitFieldInsn(int opcode, String owner, String name, String descriptor) {
 		super.visitFieldInsn(opcode, owner, name, descriptor);
+
+		switch (opcode) {
+		case Opcodes.GETSTATIC: {
+			opStack.push(Operand.builder().withOwner(owner).withName(name).withType(descriptor).build());
+			break;
+		}
+		case Opcodes.PUTSTATIC: {
+			Operand v = opStack.pop();
+			break;
+		}
+		case Opcodes.GETFIELD: {
+			Operand v = opStack.pop();
+			opStack.push(Operand.builder().withOwner(owner).withName(name).withType(descriptor).build());
+			break;
+		}
+		case Opcodes.PUTFIELD: {
+			Operand p = opStack.pop();
+			Operand v = opStack.pop();
+			break;
+		}
+		}
 	}
 
 	@Override
@@ -422,10 +681,6 @@ public class OpStackMethodVisitor extends MethodVisitor {
 	@Override
 	public void visitEnd() {
 		super.visitEnd();
-	}
-
-	public void clear() {
-		opStack.clear();
 	}
 
 	public OpStack getStack() {

@@ -9,7 +9,7 @@ import com.mebigfatguy.opstack.OpStackMethodVisitor;
 public class OSTestClassVisitor extends ClassVisitor {
 
 	private OpStackMethodVisitor methodVisitor;
-	
+
 	public OSTestClassVisitor(OpStackMethodVisitor v) {
 		super(Opcodes.ASM9);
 		methodVisitor = v;
@@ -19,10 +19,10 @@ public class OSTestClassVisitor extends ClassVisitor {
 	public MethodVisitor visitMethod(int access, String name, String descriptor, String signature,
 			String[] exceptions) {
 		if (name.startsWith("sample")) {
-			methodVisitor.clear();
+			methodVisitor.setMethodName(name);
 			return methodVisitor;
 		}
-		
+
 		return null;
 	}
 }
