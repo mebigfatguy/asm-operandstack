@@ -623,6 +623,16 @@ public class OpStackMethodVisitor extends MethodVisitor {
 
 	@Override
 	public void visitMethodInsn(int opcode, String owner, String name, String descriptor, boolean isInterface) {
+		switch (opcodes) {
+		case Opcodes.INVOKEVIRTUAL:
+			break;
+		case Opcodes.INVOKESPECIAL:
+			break;
+		case Opcodes.INVOKESTATIC:
+			break;
+		case Opcodes.INVOKEINTERFACE:
+			break;
+		}
 		super.visitMethodInsn(opcode, owner, name, descriptor, isInterface);
 	}
 
@@ -634,6 +644,44 @@ public class OpStackMethodVisitor extends MethodVisitor {
 
 	@Override
 	public void visitJumpInsn(int opcode, Label label) {
+		switch (opcode) {
+		case Opcodes.IFEQ:
+			break;
+		case Opcodes.IFNE:
+			break;
+		case Opcodes.IFLT:
+			break;
+		case Opcodes.IFGE:
+			break;
+		case Opcodes.IFGT:
+			break;
+		case Opcodes.IFLE:
+			break;
+		case Opcodes.IF_ICMPEQ:
+			break;
+		case Opcodes.IF_ICMPNE:
+			break;
+		case Opcodes.IF_ICMPLT:
+			break;
+		case Opcodes.IF_ICMPGE:
+			break;
+		case Opcodes.IF_ICMPGT:
+			break;
+		case Opcodes.IF_ICMPLE:
+			break;
+		case Opcodes.IF_ACMPEQ:
+			break;
+		case Opcodes.IF_ACMPNE:
+			break;
+		case Opcodes.GOTO:
+			break;
+		case Opcodes.JSR:
+			break;
+		case Opcodes.IFNULL:
+			break;
+		case Opcodes.IFNONNULL:
+			break;
+		}
 		super.visitJumpInsn(opcode, label);
 	}
 
