@@ -531,6 +531,14 @@ public class OpStackMethodVisitor extends MethodVisitor {
 
 	@Override
 	public void visitIntInsn(int opcode, int operand) {
+		switch (opcode) {
+		case Opcodes.BIPUSH:
+			break;
+		case Opcodes.SIPUSH:
+			break;
+		case Opcodes.NEWARRAY:
+			break;
+		}
 		super.visitIntInsn(opcode, operand);
 	}
 
@@ -623,7 +631,7 @@ public class OpStackMethodVisitor extends MethodVisitor {
 
 	@Override
 	public void visitMethodInsn(int opcode, String owner, String name, String descriptor, boolean isInterface) {
-		switch (opcodes) {
+		switch (opcode) {
 		case Opcodes.INVOKEVIRTUAL:
 			break;
 		case Opcodes.INVOKESPECIAL:
