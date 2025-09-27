@@ -18,7 +18,7 @@ public class OSTestClassVisitor extends ClassVisitor {
 	@Override
 	public MethodVisitor visitMethod(int access, String name, String descriptor, String signature,
 			String[] exceptions) {
-		if (name.startsWith("sample")) {
+		if (!name.equals("<init>")) {
 			methodVisitor.setMethodName(name);
 			return methodVisitor;
 		}

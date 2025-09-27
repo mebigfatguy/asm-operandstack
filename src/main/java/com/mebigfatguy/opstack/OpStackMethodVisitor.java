@@ -587,7 +587,6 @@ public class OpStackMethodVisitor extends MethodVisitor {
 		}
 		case Opcodes.ASTORE: {
 			Operand o = opStack.pop();
-			Operand v = opStack.pop();
 			// store register variable
 			break;
 		}
