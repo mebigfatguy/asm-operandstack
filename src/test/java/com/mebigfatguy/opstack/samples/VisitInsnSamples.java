@@ -25,11 +25,15 @@ public class VisitInsnSamples {
 	}
 
 	@ExpectOpcode(Opcodes.ACONST_NULL)
+	@ExpectOpcode(Opcodes.ASTORE)
+	@ExpectOpcode(Opcodes.RETURN)
 	public void testAConstNull() {
 		String s = null;
 	}
 
 	@ExpectOpcode(Opcodes.ICONST_M1)
+	@ExpectOpcode(Opcodes.ASTORE)
+	@ExpectOpcode(Opcodes.RETURN)
 	public void testConstM1() {
 		int i = -1;
 	}
