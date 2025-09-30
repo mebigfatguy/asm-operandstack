@@ -38,4 +38,46 @@ public class VisitInsnSamples {
 		int i = -1;
 	}
 
+	@ExpectOpcode(Opcodes.ICONST_0)
+	@ExpectOpcode(Opcodes.ASTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testConst0() {
+		int i = 0;
+	}
+
+	@ExpectOpcode(Opcodes.ICONST_1)
+	@ExpectOpcode(Opcodes.ASTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testConst1() {
+		int i = 1;
+	}
+
+	@ExpectOpcode(Opcodes.ICONST_2)
+	@ExpectOpcode(Opcodes.ASTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testConst2() {
+		int i = 2;
+	}
+
+	@ExpectOpcode(Opcodes.ICONST_3)
+	@ExpectOpcode(Opcodes.ASTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testConst3() {
+		int i = 3;
+	}
+
+	@ExpectOpcode(Opcodes.ICONST_4)
+	@ExpectOpcode(Opcodes.ASTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testConst4() {
+		int i = 4;
+	}
+
+	@ExpectOpcode(Opcodes.ICONST_5)
+	@ExpectOpcode(Opcodes.ASTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testConst5() {
+		int i = 5;
+	}
+
 }
