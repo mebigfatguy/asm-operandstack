@@ -562,31 +562,27 @@ public class OpStackMethodVisitor extends MethodVisitor {
 			opStack.push(Operand.builder().withType("Ljava/lang/Object;").withRegister(varIndex).build());
 			break;
 		case Opcodes.ISTORE: {
-			Operand o = opStack.pop();
 			Operand v = opStack.pop();
 			// store register variable
 			break;
 		}
 		case Opcodes.LSTORE: {
-			Operand o = opStack.pop();
 			Operand v = opStack.pop();
 			// store register variable
 			break;
 		}
 		case Opcodes.FSTORE: {
-			Operand o = opStack.pop();
 			Operand v = opStack.pop();
 			// store register variable
 			break;
 		}
 		case Opcodes.DSTORE: {
-			Operand o = opStack.pop();
 			Operand v = opStack.pop();
 			// store register variable
 			break;
 		}
 		case Opcodes.ASTORE: {
-			Operand o = opStack.pop();
+			Operand v = opStack.pop();
 			// store register variable
 			break;
 		}

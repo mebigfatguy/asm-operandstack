@@ -54,4 +54,5 @@ public class OpStackMethodVisitorTest {
 			throw (ClassNotFoundException) e.getCause();
 		}
 	}
+
 }

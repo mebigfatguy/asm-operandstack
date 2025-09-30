@@ -4,13 +4,11 @@ import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 
-import com.mebigfatguy.opstack.OpStackMethodVisitor;
-
 public class OSTestClassVisitor extends ClassVisitor {
 
-	private OpStackMethodVisitor methodVisitor;
+	private OSTestMethodVisitor methodVisitor;
 
-	public OSTestClassVisitor(OpStackMethodVisitor v) {
+	public OSTestClassVisitor(OSTestMethodVisitor v) {
 		super(Opcodes.ASM9);
 		methodVisitor = v;
 	}
