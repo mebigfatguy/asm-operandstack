@@ -32,52 +32,65 @@ public class VisitInsnSamples {
 	}
 
 	@ExpectOpcode(Opcodes.ICONST_M1)
-	@ExpectOpcode(Opcodes.ASTORE)
+	@ExpectOpcode(Opcodes.ISTORE)
 	@ExpectOpcode(Opcodes.RETURN)
 	public void testConstM1() {
 		int i = -1;
 	}
 
 	@ExpectOpcode(Opcodes.ICONST_0)
-	@ExpectOpcode(Opcodes.ASTORE)
+	@ExpectOpcode(Opcodes.ISTORE)
 	@ExpectOpcode(Opcodes.RETURN)
-	public void testConst0() {
+	public void testIConst0() {
 		int i = 0;
 	}
 
 	@ExpectOpcode(Opcodes.ICONST_1)
-	@ExpectOpcode(Opcodes.ASTORE)
+	@ExpectOpcode(Opcodes.ISTORE)
 	@ExpectOpcode(Opcodes.RETURN)
-	public void testConst1() {
+	public void testIConst1() {
 		int i = 1;
 	}
 
 	@ExpectOpcode(Opcodes.ICONST_2)
-	@ExpectOpcode(Opcodes.ASTORE)
+	@ExpectOpcode(Opcodes.ISTORE)
 	@ExpectOpcode(Opcodes.RETURN)
-	public void testConst2() {
+	public void testIConst2() {
 		int i = 2;
 	}
 
 	@ExpectOpcode(Opcodes.ICONST_3)
-	@ExpectOpcode(Opcodes.ASTORE)
+	@ExpectOpcode(Opcodes.ISTORE)
 	@ExpectOpcode(Opcodes.RETURN)
-	public void testConst3() {
+	public void testIConst3() {
 		int i = 3;
 	}
 
 	@ExpectOpcode(Opcodes.ICONST_4)
-	@ExpectOpcode(Opcodes.ASTORE)
+	@ExpectOpcode(Opcodes.ISTORE)
 	@ExpectOpcode(Opcodes.RETURN)
-	public void testConst4() {
+	public void testIConst4() {
 		int i = 4;
 	}
 
 	@ExpectOpcode(Opcodes.ICONST_5)
-	@ExpectOpcode(Opcodes.ASTORE)
+	@ExpectOpcode(Opcodes.ISTORE)
 	@ExpectOpcode(Opcodes.RETURN)
-	public void testConst5() {
+	public void testIConst5() {
 		int i = 5;
 	}
 
+	@ExpectOpcode(Opcodes.LCONST_0)
+	@ExpectOpcode(Opcodes.LSTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testLConst0() {
+		long l = 0L;
+	}
+
+	@ExpectOpcode(Opcodes.LCONST_1)
+	@ExpectOpcode(Opcodes.LSTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testConst1() {
+		long l = 1L;
+	}
 }

@@ -11,6 +11,7 @@ import com.mebigfatguy.opstack.OpStackMethodVisitor;
 public class OSTestMethodVisitor extends OpStackMethodVisitor implements ExpectNotifier {
 
 	private Map<Integer, Integer> seen = new HashMap<>();
+	private OSTestAnnotationVisitor annotationVisitor = new OSTestAnnotationVisitor(this);
 
 	@Override
 	public void setMethodName(String name) {
@@ -25,9 +26,14 @@ public class OSTestMethodVisitor extends OpStackMethodVisitor implements ExpectN
 	}
 
 	@Override
-	public AnnotationVisitor visitAnnotation(String descriptor, boolean visible) {
+	public void visitVarInsn(int opcode, int varIndex) {
+		super.visitVarInsn(opcode, varIndex);
+		incr(opcode);
+	}
 
-		return new OSTestAnnotationVisitor(this);
+	@Override
+	public AnnotationVisitor visitAnnotation(String descriptor, boolean visible) {
+		return annotationVisitor;
 	}
 
 	@Override
@@ -36,7 +42,8 @@ public class OSTestMethodVisitor extends OpStackMethodVisitor implements ExpectN
 		Assertions.assertTrue(getStack().isEmpty(), "parsing of " + methodName + " does not clear the op stack");
 
 		for (Map.Entry<Integer, Integer> entry : seen.entrySet()) {
-			Assertions.assertTrue(entry.getValue() > 0, "Opcode " + entry.getKey() + " was expected to be seen.");
+			Assertions.assertTrue(entry.getValue() > 0,
+					"Parsing " + methodName + ", Opcode " + entry.getKey() + " was expected to be seen.");
 		}
 	}
 

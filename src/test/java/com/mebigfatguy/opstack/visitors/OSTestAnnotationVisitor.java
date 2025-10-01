@@ -13,10 +13,19 @@ public class OSTestAnnotationVisitor extends AnnotationVisitor {
 	}
 
 	@Override
+	public AnnotationVisitor visitAnnotation(String name, String descriptor) {
+		return this;
+	}
+
+	@Override
+	public AnnotationVisitor visitArray(String name) {
+		return this;
+	}
+
+	@Override
 	public void visit(String name, Object value) {
 		if ("value".equals(name)) {
 			notifier.expect(((Integer) value).intValue());
 		}
 	}
-
 }
