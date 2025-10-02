@@ -14,9 +14,3 @@ import org.objectweb.asm.Opcodes;
 public @interface ExpectOpcode {
 	int value() default Opcodes.NOP;
 }
-
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
-@interface ExpectOpcodes {
-	ExpectOpcode[] value();
-}

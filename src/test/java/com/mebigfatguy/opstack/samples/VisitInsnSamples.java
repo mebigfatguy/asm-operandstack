@@ -93,4 +93,26 @@ public class VisitInsnSamples {
 	public void testConst1() {
 		long l = 1L;
 	}
+
+	@ExpectOpcode(Opcodes.FCONST_0)
+	@ExpectOpcode(Opcodes.FSTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testFConst0() {
+		float f = 0.0f;
+	}
+
+	@ExpectOpcode(Opcodes.FCONST_1)
+	@ExpectOpcode(Opcodes.FSTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testFConst1() {
+		float f = 1.0f;
+	}
+
+	@ExpectOpcode(Opcodes.FCONST_2)
+	@ExpectOpcode(Opcodes.FSTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testFConst2() {
+		float f = 2.0f;
+	}
+
 }
