@@ -115,4 +115,18 @@ public class VisitInsnSamples {
 		float f = 2.0f;
 	}
 
+	@ExpectOpcode(Opcodes.DCONST_0)
+	@ExpectOpcode(Opcodes.DSTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testDConst0() {
+		double d = 0.0;
+	}
+
+	@ExpectOpcode(Opcodes.DCONST_1)
+	@ExpectOpcode(Opcodes.DSTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testDConst1() {
+		double d = 1.0;
+	}
+
 }
