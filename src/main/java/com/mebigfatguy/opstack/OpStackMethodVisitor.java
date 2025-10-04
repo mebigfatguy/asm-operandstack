@@ -114,27 +114,35 @@ public class OpStackMethodVisitor extends MethodVisitor {
 			break;
 		case Opcodes.IASTORE:
 			opStack.pop2();
+			opStack.pop();
 			break;
 		case Opcodes.LASTORE:
 			opStack.pop2();
+			opStack.pop();
 			break;
 		case Opcodes.FASTORE:
 			opStack.pop2();
+			opStack.pop();
 			break;
 		case Opcodes.DASTORE:
 			opStack.pop2();
+			opStack.pop();
 			break;
 		case Opcodes.AASTORE:
 			opStack.pop2();
+			opStack.pop();
 			break;
 		case Opcodes.BASTORE:
 			opStack.pop2();
+			opStack.pop();
 			break;
 		case Opcodes.CASTORE:
 			opStack.pop2();
+			opStack.pop();
 			break;
 		case Opcodes.SASTORE:
 			opStack.pop2();
+			opStack.pop();
 			break;
 		case Opcodes.POP:
 			opStack.pop();

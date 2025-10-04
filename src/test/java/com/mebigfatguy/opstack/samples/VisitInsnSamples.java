@@ -200,4 +200,77 @@ public class VisitInsnSamples {
 	public void testSALoad(short[] sa) {
 		short s = sa[0];
 	}
+
+	@ExpectOpcode(Opcodes.ALOAD)
+	@ExpectOpcode(Opcodes.ICONST_0)
+	@ExpectOpcode(Opcodes.ICONST_0)
+	@ExpectOpcode(Opcodes.IASTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testIAStore(int[] ia) {
+		ia[0] = 0;
+	}
+
+	@ExpectOpcode(Opcodes.ALOAD)
+	@ExpectOpcode(Opcodes.ICONST_0)
+	@ExpectOpcode(Opcodes.LCONST_0)
+	@ExpectOpcode(Opcodes.LASTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testLAStore(long[] la) {
+		la[0] = 0L;
+	}
+
+	@ExpectOpcode(Opcodes.ALOAD)
+	@ExpectOpcode(Opcodes.ICONST_0)
+	@ExpectOpcode(Opcodes.FCONST_0)
+	@ExpectOpcode(Opcodes.FASTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testFAStore(float[] fa) {
+		fa[0] = 0.0F;
+	}
+
+	@ExpectOpcode(Opcodes.ALOAD)
+	@ExpectOpcode(Opcodes.ICONST_0)
+	@ExpectOpcode(Opcodes.DCONST_0)
+	@ExpectOpcode(Opcodes.DASTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testDAStore(double[] da) {
+		da[0] = 0.0;
+	}
+
+	@ExpectOpcode(Opcodes.ALOAD)
+	@ExpectOpcode(Opcodes.ICONST_0)
+	@ExpectOpcode(Opcodes.ACONST_NULL)
+	@ExpectOpcode(Opcodes.AASTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testAAStore(Object[] aa) {
+		aa[0] = null;
+	}
+
+	@ExpectOpcode(Opcodes.ALOAD)
+	@ExpectOpcode(Opcodes.ICONST_0)
+	@ExpectOpcode(Opcodes.ICONST_0)
+	@ExpectOpcode(Opcodes.BASTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testBAStore(byte[] ba) {
+		ba[0] = 0;
+	}
+
+	@ExpectOpcode(Opcodes.ALOAD)
+	@ExpectOpcode(Opcodes.ICONST_0)
+	@ExpectOpcode(Opcodes.ICONST_0)
+	@ExpectOpcode(Opcodes.CASTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testCAStore(char[] ca) {
+		ca[0] = 0;
+	}
+
+	@ExpectOpcode(Opcodes.ALOAD)
+	@ExpectOpcode(Opcodes.ICONST_0)
+	@ExpectOpcode(Opcodes.ICONST_0)
+	@ExpectOpcode(Opcodes.SASTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testSAStore(short[] sa) {
+		sa[0] = 0;
+	}
+
 }
