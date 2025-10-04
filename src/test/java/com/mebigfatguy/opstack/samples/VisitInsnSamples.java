@@ -273,4 +273,23 @@ public class VisitInsnSamples {
 		sa[0] = 0;
 	}
 
+	@ExpectOpcode(Opcodes.ALOAD)
+	@ExpectOpcode(Opcodes.INVOKEVIRTUAL)
+	@ExpectOpcode(Opcodes.POP)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testPop(String s) {
+		s.toString();
+	}
+
+	@ExpectOpcode(Opcodes.ALOAD)
+	@ExpectOpcode(Opcodes.INVOKEVIRTUAL)
+	@ExpectOpcode(Opcodes.POP)
+	@ExpectOpcode(Opcodes.POP)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testPop(Long l) {
+		l.longValue();
+	}
+
+	// POP, POP2, DUP, DUP_X1, DUP_X2, DUP2, DUP2_X1, DUP2_X2, SWAP,
+
 }
