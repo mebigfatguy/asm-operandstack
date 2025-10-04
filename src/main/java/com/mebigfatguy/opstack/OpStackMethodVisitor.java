@@ -81,26 +81,35 @@ public class OpStackMethodVisitor extends MethodVisitor {
 			opStack.push(Operand.builder().withValue(1).withType("D").build());
 			break;
 		case Opcodes.IALOAD:
+			opStack.pop2();
 			opStack.push(Operand.builder().withType("I").build());
 			break;
 		case Opcodes.LALOAD:
+			opStack.pop2();
 			opStack.push(Operand.builder().withType("J").build());
 			break;
 		case Opcodes.FALOAD:
+			opStack.pop2();
 			opStack.push(Operand.builder().withType("F").build());
 			break;
 		case Opcodes.DALOAD:
+			opStack.pop2();
 			opStack.push(Operand.builder().withType("D").build());
 			break;
 		case Opcodes.AALOAD:
+			opStack.pop2();
+			opStack.push(Operand.builder().withType("l").build());
 			break;
 		case Opcodes.BALOAD:
+			opStack.pop2();
 			opStack.push(Operand.builder().withType("B").build());
 			break;
 		case Opcodes.CALOAD:
+			opStack.pop2();
 			opStack.push(Operand.builder().withType("C").build());
 			break;
 		case Opcodes.SALOAD:
+			opStack.pop2();
 			opStack.push(Operand.builder().withType("Ljava/lang/String;").build());
 			break;
 		case Opcodes.IASTORE:

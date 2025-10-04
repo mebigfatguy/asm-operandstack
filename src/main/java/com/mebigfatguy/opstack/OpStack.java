@@ -33,4 +33,9 @@ public class OpStack {
 		return stack.isEmpty();
 	}
 
+	@Override
+	public String toString() {
+		return stack.toString();
+	}
+
 }

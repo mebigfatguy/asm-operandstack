@@ -39,12 +39,15 @@ public class OSTestMethodVisitor extends OpStackMethodVisitor implements ExpectN
 	@Override
 	public void visitEnd() {
 		super.visitEnd();
-		Assertions.assertTrue(getStack().isEmpty(), "parsing of " + methodName + " does not clear the op stack");
 
 		for (Map.Entry<Integer, Integer> entry : seen.entrySet()) {
 			Assertions.assertTrue(entry.getValue() > 0,
 					"Parsing " + methodName + ", Opcode " + entry.getKey() + " was expected to be seen.");
 		}
+
+		Assertions.assertTrue(getStack().isEmpty(),
+				"parsing of " + methodName + " does not clear the op stack: " + opStack);
+
 	}
 
 	@Override

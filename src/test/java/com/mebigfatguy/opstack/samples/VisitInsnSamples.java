@@ -129,4 +129,75 @@ public class VisitInsnSamples {
 		double d = 1.0;
 	}
 
+	@ExpectOpcode(Opcodes.ALOAD)
+	@ExpectOpcode(Opcodes.ICONST_0)
+	@ExpectOpcode(Opcodes.IALOAD)
+	@ExpectOpcode(Opcodes.ISTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testIALoad(int[] ia) {
+		int i = ia[0];
+	}
+
+	@ExpectOpcode(Opcodes.ALOAD)
+	@ExpectOpcode(Opcodes.ICONST_0)
+	@ExpectOpcode(Opcodes.LALOAD)
+	@ExpectOpcode(Opcodes.LSTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testLALoad(long[] la) {
+		long l = la[0];
+	}
+
+	@ExpectOpcode(Opcodes.ALOAD)
+	@ExpectOpcode(Opcodes.ICONST_0)
+	@ExpectOpcode(Opcodes.FALOAD)
+	@ExpectOpcode(Opcodes.FSTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testFALoad(float[] fa) {
+		float l = fa[0];
+	}
+
+	@ExpectOpcode(Opcodes.ALOAD)
+	@ExpectOpcode(Opcodes.ICONST_0)
+	@ExpectOpcode(Opcodes.DALOAD)
+	@ExpectOpcode(Opcodes.DSTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testDALoad(double[] da) {
+		double d = da[0];
+	}
+
+	@ExpectOpcode(Opcodes.ALOAD)
+	@ExpectOpcode(Opcodes.ICONST_0)
+	@ExpectOpcode(Opcodes.AALOAD)
+	@ExpectOpcode(Opcodes.ASTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testAALoad(Object[] aa) {
+		Object o = aa[0];
+	}
+
+	@ExpectOpcode(Opcodes.ALOAD)
+	@ExpectOpcode(Opcodes.ICONST_0)
+	@ExpectOpcode(Opcodes.BALOAD)
+	@ExpectOpcode(Opcodes.ISTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testBALoad(byte[] ba) {
+		byte b = ba[0];
+	}
+
+	@ExpectOpcode(Opcodes.ALOAD)
+	@ExpectOpcode(Opcodes.ICONST_0)
+	@ExpectOpcode(Opcodes.CALOAD)
+	@ExpectOpcode(Opcodes.ISTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testCALoad(char[] ca) {
+		char c = ca[0];
+	}
+
+	@ExpectOpcode(Opcodes.ALOAD)
+	@ExpectOpcode(Opcodes.ICONST_0)
+	@ExpectOpcode(Opcodes.SALOAD)
+	@ExpectOpcode(Opcodes.ISTORE)
+	@ExpectOpcode(Opcodes.RETURN)
+	public void testSALoad(short[] sa) {
+		short s = sa[0];
+	}
 }
