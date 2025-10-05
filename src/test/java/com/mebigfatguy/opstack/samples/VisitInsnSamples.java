@@ -1,5 +1,8 @@
 package com.mebigfatguy.opstack.samples;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.objectweb.asm.Opcodes;
 
 import com.mebigfatguy.opstack.ExpectOpcode;
@@ -283,13 +286,21 @@ public class VisitInsnSamples {
 
 	@ExpectOpcode(Opcodes.ALOAD)
 	@ExpectOpcode(Opcodes.INVOKEVIRTUAL)
-	@ExpectOpcode(Opcodes.POP)
-	@ExpectOpcode(Opcodes.POP)
+	@ExpectOpcode(Opcodes.POP2)
 	@ExpectOpcode(Opcodes.RETURN)
 	public void testPop(Long l) {
 		l.longValue();
 	}
 
-	// POP, POP2, DUP, DUP_X1, DUP_X2, DUP2, DUP2_X1, DUP2_X2, SWAP,
+	@ExpectOpcode(Opcodes.NEW)
+	@ExpectOpcode(Opcodes.DUP)
+	@ExpectOpcode(Opcodes.ICONST_0)
+	@ExpectOpcode(Opcodes.INVOKESPECIAL)
+	@ExpectOpcode(Opcodes.ARETURN)
+	public List<String> testDup() {
+		return new ArrayList<>(0);
+	}
+
+	// DUP, DUP_X1, DUP_X2, DUP2, DUP2_X1, DUP2_X2, SWAP,
 
 }

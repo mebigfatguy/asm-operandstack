@@ -5,6 +5,8 @@ import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 
+import com.mebigfatguy.opstack.SignatureParser.MethodSignature;
+
 public class OpStackMethodVisitor extends MethodVisitor {
 
 	protected OpStack opStack = new OpStack();
@@ -148,7 +150,7 @@ public class OpStackMethodVisitor extends MethodVisitor {
 			opStack.pop();
 			break;
 		case Opcodes.POP2:
-			opStack.pop2();
+			opStack.pop(); // we don't split longs
 			break;
 		case Opcodes.DUP:
 			opStack.dup();
@@ -613,6 +615,22 @@ public class OpStackMethodVisitor extends MethodVisitor {
 	@Override
 	public void visitTypeInsn(int opcode, String type) {
 		super.visitTypeInsn(opcode, type);
+
+		switch (opcode) {
+		case Opcodes.NEW: {
+			opStack.push(Operand.builder().withType(type).build());
+			break;
+		}
+		case Opcodes.ANEWARRAY: {
+			break;
+		}
+		case Opcodes.CHECKCAST: {
+			break;
+		}
+		case Opcodes.INSTANCEOF: {
+			break;
+		}
+		}
 	}
 
 	@Override
@@ -645,12 +663,16 @@ public class OpStackMethodVisitor extends MethodVisitor {
 	public void visitMethodInsn(int opcode, String owner, String name, String descriptor, boolean isInterface) {
 		switch (opcode) {
 		case Opcodes.INVOKEVIRTUAL:
+			processMethodCall(opcode, descriptor);
 			break;
 		case Opcodes.INVOKESPECIAL:
+			processMethodCall(opcode, descriptor);
 			break;
 		case Opcodes.INVOKESTATIC:
+			processMethodCall(opcode, descriptor);
 			break;
 		case Opcodes.INVOKEINTERFACE:
+			processMethodCall(opcode, descriptor);
 			break;
 		}
 		super.visitMethodInsn(opcode, owner, name, descriptor, isInterface);
@@ -753,5 +775,19 @@ public class OpStackMethodVisitor extends MethodVisitor {
 
 	public OpStack getStack() {
 		return opStack;
+	}
+
+	public void processMethodCall(int opcode, String descriptor) {
+		MethodSignature ms = SignatureParser.parseMethodSignature(descriptor);
+		int numParms = ms.getMethodParameters().size();
+		for (int i = 0; i < numParms; i++) {
+			opStack.pop();
+		}
+		if (opcode == Opcodes.INVOKEVIRTUAL || opcode == Opcodes.INVOKEINTERFACE || opcode == Opcodes.INVOKESPECIAL) {
+			opStack.pop();
+		}
+		if (!"V".equals(ms.getReturnType())) {
+			opStack.push(Operand.builder().build());
+		}
 	}
 }

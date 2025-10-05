@@ -38,6 +38,12 @@ public class OSTestMethodVisitor extends OpStackMethodVisitor implements ExpectN
 	}
 
 	@Override
+	public void visitTypeInsn(int opcode, String type) {
+		super.visitTypeInsn(opcode, type);
+		incr(opcode);
+	}
+
+	@Override
 	public AnnotationVisitor visitAnnotation(String descriptor, boolean visible) {
 		return annotationVisitor;
 	}

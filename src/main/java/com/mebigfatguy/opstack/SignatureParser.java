@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 public final class SignatureParser {
 
-	private static Pattern SIG_PATTERN = Pattern.compile("(\\[*(:?(:?L[^;]*;)|I|J|F|D|B|C|S|Z))");
+	private static Pattern SIG_PATTERN = Pattern.compile("(\\[*(:?(:?L[^;]*;)|I|J|F|D|B|C|S|V))");
 
 	private SignatureParser() {
 	}
@@ -24,25 +24,31 @@ public final class SignatureParser {
 		}
 
 		Matcher m = SIG_PATTERN.matcher(signature);
-		if (!m.find(1)) {
-			throw new SignatureParsingException(signature, 1);
-		}
 
-		if (m.start() != 1) {
-			throw new SignatureParsingException(signature, 1);
-		}
+		List<String> parms = new ArrayList<>(8);
+		int lastEnd;
+		if (signature.charAt(1) != ')') {
+			if (!m.find(1)) {
+				throw new SignatureParsingException(signature, 1);
+			}
 
-		List<String> parms = new ArrayList<>();
-		parms.add(m.group(1));
-
-		int lastEnd = m.end();
-		while (signature.charAt(lastEnd) != ')') {
-			if (!m.find()) {
-				throw new SignatureParsingException(signature, lastEnd);
+			if (m.start() != 1) {
+				throw new SignatureParsingException(signature, 1);
 			}
 
 			parms.add(m.group(1));
+
 			lastEnd = m.end();
+			while (signature.charAt(lastEnd) != ')') {
+				if (!m.find()) {
+					throw new SignatureParsingException(signature, lastEnd);
+				}
+
+				parms.add(m.group(1));
+				lastEnd = m.end();
+			}
+		} else {
+			lastEnd = 1;
 		}
 
 		if (!m.find(lastEnd + 1)) {

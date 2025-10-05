@@ -8,6 +8,14 @@ import com.mebigfatguy.opstack.SignatureParser.MethodSignature;
 public class SignatureParserTest {
 
 	@Test
+	public void testNoArgPrimitiveSignature() {
+
+		MethodSignature ms = SignatureParser.parseMethodSignature("()I");
+		Assertions.assertEquals("I", ms.getReturnType());
+		Assertions.assertEquals(0, ms.getMethodParameters().size());
+	}
+
+	@Test
 	public void testSimplePrimitiveSignature() {
 
 		MethodSignature ms = SignatureParser.parseMethodSignature("(I)I");
@@ -18,8 +26,8 @@ public class SignatureParserTest {
 	@Test
 	public void testComplexPrimitiveSignature() {
 
-		MethodSignature ms = SignatureParser.parseMethodSignature("(IJFDBCD)Z");
-		Assertions.assertEquals("Z", ms.getReturnType());
+		MethodSignature ms = SignatureParser.parseMethodSignature("(IJFDBCD)V");
+		Assertions.assertEquals("V", ms.getReturnType());
 		Assertions.assertEquals("I", ms.getMethodParameters().get(0));
 		Assertions.assertEquals("J", ms.getMethodParameters().get(1));
 		Assertions.assertEquals("F", ms.getMethodParameters().get(2));
