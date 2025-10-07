@@ -21,6 +21,12 @@ public class OpStack {
 		stack.remove(--len);
 	}
 
+	public void dup2x2() {
+		int len = stack.size();
+		Operand top = stack.get(len - 1);
+		stack.add(len - 2, top.clone());
+	}
+
 	public void dup() {
 		stack.add(stack.get(stack.size() - 1));
 	}

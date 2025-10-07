@@ -164,6 +164,7 @@ public class OpStackMethodVisitor extends MethodVisitor {
 		case Opcodes.DUP2_X1:
 			break;
 		case Opcodes.DUP2_X2:
+			opStack.dup2x2();
 			break;
 		case Opcodes.SWAP:
 			break;

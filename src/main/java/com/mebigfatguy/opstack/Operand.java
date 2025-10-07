@@ -1,6 +1,6 @@
 package com.mebigfatguy.opstack;
 
-public class Operand {
+public class Operand implements Cloneable {
 
 	private record Value(boolean known, Object value) {
 		static Value UNKNOWN = new Value(false, null);
@@ -17,6 +17,16 @@ public class Operand {
 	private String name;
 
 	private Operand() {
+	}
+
+	@Override
+	public Operand clone() {
+		try {
+			return (Operand) super.clone();
+		} catch (CloneNotSupportedException e) {
+			// won't happen
+			throw new Error();
+		}
 	}
 
 	public static Builder builder() {

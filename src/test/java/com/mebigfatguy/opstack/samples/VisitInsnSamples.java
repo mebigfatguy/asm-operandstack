@@ -301,6 +301,26 @@ public class VisitInsnSamples {
 		return new ArrayList<>(0);
 	}
 
-	// DUP, DUP_X1, DUP_X2, DUP2, DUP2_X1, DUP2_X2, SWAP,
+	public void testDupX1() {
+	}
+
+	public void testDupX2() {
+	}
+
+	public void testDup2() {
+	}
+
+	public void testDup2X1() {
+	}
+
+	@ExpectOpcode(Opcodes.ALOAD)
+	@ExpectOpcode(Opcodes.ICONST_0)
+	@ExpectOpcode(Opcodes.ICONST_0)
+	@ExpectOpcode(Opcodes.DUP2_X2)
+	@ExpectOpcode(Opcodes.LASTORE)
+	@ExpectOpcode(Opcodes.LRETURN)
+	public long testDup2X2(long[] ll) {
+		return ll[0] = 0L;
+	}
 
 }
