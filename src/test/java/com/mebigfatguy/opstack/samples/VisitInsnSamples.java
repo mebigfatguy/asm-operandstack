@@ -323,4 +323,38 @@ public class VisitInsnSamples {
 		return ll[0] = 0L;
 	}
 
+	public void testSwap() {
+	}
+
+	@ExpectOpcode(Opcodes.ILOAD)
+	@ExpectOpcode(Opcodes.ILOAD)
+	@ExpectOpcode(Opcodes.IADD)
+	@ExpectOpcode(Opcodes.IRETURN)
+	public int testIAdd(int i, int j) {
+		return i + j;
+	}
+
+	@ExpectOpcode(Opcodes.LLOAD)
+	@ExpectOpcode(Opcodes.LLOAD)
+	@ExpectOpcode(Opcodes.LADD)
+	@ExpectOpcode(Opcodes.LRETURN)
+	public long testLAdd(long i, long j) {
+		return i + j;
+	}
+
+	@ExpectOpcode(Opcodes.FLOAD)
+	@ExpectOpcode(Opcodes.FLOAD)
+	@ExpectOpcode(Opcodes.FADD)
+	@ExpectOpcode(Opcodes.FRETURN)
+	public float testFAdd(float i, float j) {
+		return i + j;
+	}
+
+	@ExpectOpcode(Opcodes.DLOAD)
+	@ExpectOpcode(Opcodes.DLOAD)
+	@ExpectOpcode(Opcodes.DADD)
+	@ExpectOpcode(Opcodes.DRETURN)
+	public double testFAdd(double i, double j) {
+		return i + j;
+	}
 }
